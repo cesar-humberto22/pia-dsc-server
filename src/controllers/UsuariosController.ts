@@ -76,7 +76,6 @@ export class UsuariosController {
                 httpOnly: false,
                 sameSite: "none",
                 secure: true,
-                expires: false,
                 maxAge: 2147483647
             })
 

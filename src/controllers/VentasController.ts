@@ -8,7 +8,7 @@ export class VentasController {
 
     public static getVentas = async (req: Request, res: Response) => {
         try {
-            const query = req.query;
+            const query = req.query as any;
             let filter = {};
 
             if(query.fecha){
