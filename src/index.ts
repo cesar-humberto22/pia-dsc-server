@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import "reflect-metadata";
 import express, { RequestHandler } from "express";
 import helmet from "helmet";
@@ -15,7 +16,7 @@ import {Ventas} from "./entity/Ventas";
 
 const AppDataSource = new DataSource({
     type: "mongodb",
-    url: "mongodb+srv://cesar-charlize:6s34Qhd0stuqNajT@cluster0.e8oeovy.mongodb.net/app",
+    url: process.env.MONGO_URL,
     entities: [Productos, Categoria, Usuarios, Ventas],
     synchronize: true,
     logging: false
@@ -28,7 +29,7 @@ AppDataSource
 
         app.use(cors({
             credentials: true,
-            origin: ["http://192.168.100.5:5173", "http://192.168.1.74:5173"]
+            origin: process.env.CORS.split(',')
         }));
         //app.use(helmet());
         app.use(express.json({limit: "50mb"}) as RequestHandler);
@@ -63,7 +64,7 @@ AppDataSource
 
         app.use("/api/v1/", routes);
 
-        app.listen(3000, () => {
+        app.listen(process.env.PORT || 3000, () => {
             console.log("Server started on port 3000!");
         });
     })

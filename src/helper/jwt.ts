@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-const TOKEN_SECRET = 'U46P4l#0*fyLF40Lnafa9erJq';
+const TOKEN_SECRET = process.env.TOKEN_SECRET;
 
 export function generateAccessToken(username: object) {
     return jwt.sign(username, TOKEN_SECRET, {});
