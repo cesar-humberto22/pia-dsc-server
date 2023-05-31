@@ -12,6 +12,18 @@ const router = Router();
  *     summary: Obtener la lista de productos
  *     produces:
  *          - applications/json
+ *     parameters:
+ *       - in: query
+ *         name: Producto
+ *         description: Objeto JSON que contiene los detalles del producto a filtrar.
+ *         required: false
+ *         schema:
+ *           type: object
+ *           properties:
+ *             limit:
+ *               type: number
+ *             search:
+ *               type: string
  *     responses:
  *       200:
  *         description: Proceso exitoso
@@ -25,6 +37,33 @@ const router = Router();
  *         description: Algún error del servidor
  */
 router.get("/", ProductoController.getProductos);
+
+/**
+ * @swagger
+ * /api/v1/productos/img/{id}:
+ *   get:
+ *     tags:
+ *       - Productos
+ *     summary: Obtener la imagen un producto
+ *     produces:
+ *          - applications/json
+ *     parameters: 
+ *         - name: id
+ *           in: path
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Proceso exitoso
+ *       400:
+ *         description: Datos incorrectos
+ *       401: 
+ *         description: Token incorrecto   
+ *       403:
+ *         description: Token expirado
+ *       500:
+ *         description: Algún error del servidor
+ */
+router.get("/img/:id", ProductoController.getImgProductos);
 
 /**
  * @swagger
@@ -71,11 +110,15 @@ router.get("/:id", ProductoController.findProductos);
  *           type: object
  *           properties:
  *             idCategoria:
- *               type: number
- *             name:
+ *               type: string
+ *             nombre:
  *               type: string
  *             precio:
- *               type: number
+ *               type: string
+ *             imagen:
+ *               type: string
+ *             color:
+ *               type: string
  *             num_inventario:
  *               type: number
  *     responses:

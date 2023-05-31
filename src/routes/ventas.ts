@@ -12,6 +12,16 @@ const router = Router();
  *     summary: Obtener la lista de ventas
  *     produces:
  *          - applications/json
+ *     parameters:
+ *       - in: query
+ *         name: Venta
+ *         description: Objeto JSON que contiene los detalles de la venta a filtrar.
+ *         required: false
+ *         schema:
+ *           type: object
+ *           properties:
+ *             fecha:
+ *               type: string
  *     responses:
  *       200:
  *         description: Proceso exitoso
@@ -72,6 +82,8 @@ router.get("/:id", VentasController.findVentas);
  *           properties:
  *             idUsuario:
  *               type: number
+ *             fechaEmision:
+ *               type: string
  *             listaProductos:
  *               type: Array
  *               items:

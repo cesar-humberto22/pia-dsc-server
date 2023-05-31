@@ -7,7 +7,7 @@ export class CategoriaController {
 
     public static getCategoria = async (req: Request, res: Response) => {
         try {
-            const categoria = req.orm.getRepository(Categoria)
+            const categoria = req.orm.getMongoRepository(Categoria)
             res.status(200).json(BeautyReturn(200, await categoria.find({
                 where: {
                     borrado: false
@@ -23,7 +23,7 @@ export class CategoriaController {
             if(!req.params.id)
                 throw "Ingrese un id valido"
 
-            const categoria = req.orm.getRepository(Categoria)
+            const categoria = req.orm.getMongoRepository(Categoria)
             const find  = await categoria.findOneBy({
                 _id: new ObjectId(req.params.id)
             })
@@ -43,7 +43,7 @@ export class CategoriaController {
             if(!body)
                 throw "Ingrese datos validos"
 
-            const categoria = req.orm.getRepository(Categoria)
+            const categoria = req.orm.getMongoRepository(Categoria)
             const categoria_new = new Categoria()
             categoria_new.categoria = body.categoria
             categoria_new.fechaRegistro = new Date()
@@ -65,7 +65,7 @@ export class CategoriaController {
             if(!req.params.id)
                 throw "Ingrese un id valido"
 
-            const categoria = req.orm.getRepository(Categoria)
+            const categoria = req.orm.getMongoRepository(Categoria)
             const find = await categoria.findOneBy({
                 _id: new ObjectId(req.params.id)
             })
@@ -93,7 +93,7 @@ export class CategoriaController {
             if(!req.params.id)
                 throw "Ingrese un id valido"
 
-            const categoria = req.orm.getRepository(Categoria)
+            const categoria = req.orm.getMongoRepository(Categoria)
             const find = await categoria.findOneBy({
                 _id: new ObjectId(req.params.id)
             })

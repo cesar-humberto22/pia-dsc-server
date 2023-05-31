@@ -28,6 +28,124 @@ router.get("/", UsuariosController.getUsuarios);
 
 /**
  * @swagger
+ * /api/v1/usuarios/me:
+ *   get:
+ *     tags:
+ *       - Usuarios
+ *     summary: Obtener la sesión iniciada del usuario
+ *     produces:
+ *          - applications/json
+ *     responses:
+ *       200:
+ *         description: Proceso exitoso
+ *       400:
+ *         description: Datos incorrectos
+ *       401: 
+ *         description: Token incorrecto   
+ *       403:
+ *         description: Token expirado
+ *       500:
+ *         description: Algún error del servidor
+ */
+router.get("/me", UsuariosController.getMe);
+
+/**
+ * @swagger
+ * /api/v1/usuarios/login:
+ *   post:
+ *     tags:
+ *       - Usuarios
+ *     summary: Obtener la lista de usuarios
+ *     produces:
+ *          - applications/json
+ *     parameters:
+ *       - in: body
+ *         name: Usuario
+ *         description: Objeto JSON que debe de tener el usuario y password para el login
+ *         required: true
+ *         schema:
+ *           type: object
+ *           properties:
+ *             usuario:
+ *               type: string
+ *             password:
+ *               type: string
+ *     responses:
+ *       200:
+ *         description: Proceso exitoso
+ *       400:
+ *         description: Datos incorrectos
+ *       401: 
+ *         description: Token incorrecto   
+ *       403:
+ *         description: Token expirado
+ *       500:
+ *         description: Algún error del servidor
+ */
+router.post("/login", UsuariosController.getLogin);
+
+/**
+ * @swagger
+ * /api/v1/usuarios/register:
+ *   post:
+ *     tags:
+ *       - Usuarios
+ *     summary: Registrar usuario
+ *     produces:
+ *          - applications/json
+ *     parameters:
+ *       - in: body
+ *         name: Usuario
+ *         description: Objeto JSON que debe de tener el usuario y password para el login
+ *         required: true
+ *         schema:
+ *           type: object
+ *     responses:
+ *       200:
+ *         description: Proceso exitoso
+ *       400:
+ *         description: Datos incorrectos
+ *       401: 
+ *         description: Token incorrecto   
+ *       403:
+ *         description: Token expirado
+ *       500:
+ *         description: Algún error del servidor
+ */
+router.post("/register", UsuariosController.getRegister);
+
+/**
+ * @swagger
+ * /api/v1/usuarios/change-password:
+ *   post:
+ *     tags:
+ *       - Usuarios
+ *     summary: Registrar usuario
+ *     produces:
+ *          - applications/json
+ *     parameters:
+ *       - in: body
+ *         name: Usuario
+ *         description: Objeto JSON que debe de tener el usuario y password para el login
+ *         required: true
+ *         schema:
+ *           type: object
+ *     responses:
+ *       200:
+ *         description: Proceso exitoso
+ *       400:
+ *         description: Datos incorrectos
+ *       401: 
+ *         description: Token incorrecto   
+ *       403:
+ *         description: Token expirado
+ *       500:
+ *         description: Algún error del servidor
+ */
+router.post("/change-password", UsuariosController.getChangePassword);
+
+/**
+ * @swagger
  * /api/v1/usuarios/{id}:
  *   get:
  *     tags:

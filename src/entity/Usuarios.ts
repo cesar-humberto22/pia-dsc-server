@@ -30,6 +30,21 @@ export class Usuarios {
     @UpdateDateColumn({ type: "timestamp" })
     public fechaActualizacion?: Date;
 
+    @Column()
+    public nombres?: string;
+
+    @Column()
+    public apellidos?: string;
+
+    @Column()
+    public matricula?: string;
+
+    @Column()
+    public edad?: number;
+
+    @Column()
+    public ip?: string;
+
     @Column({ default: false })
     public borrado?: boolean;
 }
